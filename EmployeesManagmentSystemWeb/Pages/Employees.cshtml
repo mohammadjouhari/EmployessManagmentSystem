@@ -1,0 +1,97 @@
+﻿@page
+@model EmployeesManagmentSystemWeb.Pages.EmployeesModel
+@{
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employees Managment System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Maqta.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Employees">Employees</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-3">
+                    <h1>Employees</h1>
+                </div>
+                <div class="col-3">
+
+                </div>
+                <div class="col-3">
+
+                </div>
+                <div class="col-3" style="position:fixed;top:0;right:0;border:0">
+                    <form method="post">
+                        <input type="submit" class="btn btn-primary" value="Log out"
+                               asp-page-handler="Logout" />
+                    </form>
+                </div>
+            </div>         
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Allemployees)
+                    {
+                        <tr>
+                            <th scope="row">@item.ID</th>
+                            <td>@item.FirstName</td>
+                            <td>@item.DepartmentName</td>
+                            <td>@item.Salary</td>
+                            <td>@item.Mobile</td>
+                            <td>@item.CountryName</td>
+                            <td>
+                                <form method="post">
+                                    <input type="text" style="display:none;" name="empId" value="@item.ID" />
+                                    <input type="submit" class="btn btn-primary" value="Edit Employee" asp-page-handler="Redirect2" />
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="text" style="display:none;" name="empId" value="@item.ID" />
+                                    <input type="submit" class="btn btn-primary" value="Delete Employee" asp-page-handler="Redirect3" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+            <br />
+            <form method="post">
+                <input type="submit" class="btn btn-primary" value="Add Employee"
+                       asp-page-handler="Redirect1" />
+            </form>
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+
+
+
+
+

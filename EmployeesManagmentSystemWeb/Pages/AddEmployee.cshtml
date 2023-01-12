@@ -1,0 +1,69 @@
+﻿@page
+@model EmployeesManagmentSystemWeb.Pages.AddEmployeeModel
+@{
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employees Managment System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Employees">Employees</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h1>Add Employee</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="Departments">Departments</label>
+                    <select class="form-select" name="departments" aria-label="select Department">
+
+                        @foreach (var item in Model.Departments)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="salary">salary</label>
+                    <input type="number" class="form-control" name="salary" placeholder="Enter Salary">
+                </div>
+                <div class="form-group">
+                    <label for="mobile">mobile</label>
+                    <input type="text" class="form-control" name="mobile" placeholder="Enter mobile">
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="Countries">Countries</label>
+                    <select class="form-select" name="Countries" aria-label="select Country">
+
+                        @foreach (var item in Model.Countries)
+                        {
+                            <option value="@item.ID">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
